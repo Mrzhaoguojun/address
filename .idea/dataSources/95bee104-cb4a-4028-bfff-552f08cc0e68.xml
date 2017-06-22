@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="tcmp054">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.1">
+    <root id="1"/>
+    <schema id="2" parent="1" name="address">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="dizhi"/>
+    <schema id="4" parent="1" name="hospitalmanagement"/>
+    <schema id="5" parent="1" name="information_schema"/>
+    <schema id="6" parent="1" name="mysql"/>
+    <schema id="7" parent="1" name="performance_schema"/>
+    <schema id="8" parent="1" name="test"/>
+    <schema id="9" parent="1" name="tjct073"/>
+    <schema id="10" parent="1" name="workorder"/>
+    <table id="11" parent="2" name="area"/>
+    <table id="12" parent="2" name="city"/>
+    <table id="13" parent="2" name="community"/>
+    <table id="14" parent="2" name="district"/>
+    <table id="15" parent="2" name="province"/>
+    <table id="16" parent="2" name="street"/>
+    <column id="17" parent="11" name="areaid">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="18" parent="11" name="areaname">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="19" parent="11" name="parentid">
+      <Position>3</Position>
+      <DataType>int(10)|0</DataType>
+    </column>
+    <index id="20" parent="11" name="parentid">
+      <ColNames>parentid</ColNames>
+    </index>
+    <key id="21" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>areaid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="22" parent="11" name="area_ibfk_1">
+      <ColNames>parentid</ColNames>
+      <RefSchemaName>address</RefSchemaName>
+      <RefTableName>area</RefTableName>
+      <RefColNames>areaid</RefColNames>
+    </foreign-key>
+    <column id="23" parent="12" name="cityid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="24" parent="12" name="provinceid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="25" parent="12" name="cityname">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <index id="26" parent="12" name="provinceid">
+      <ColNames>provinceid</ColNames>
+    </index>
+    <key id="27" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>cityid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="28" parent="12" name="city_ibfk_1">
+      <ColNames>provinceid</ColNames>
+      <RefSchemaName>address</RefSchemaName>
+      <RefTableName>province</RefTableName>
+      <RefColNames>provinceid</RefColNames>
+    </foreign-key>
+    <column id="29" parent="13" name="communityid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="30" parent="13" name="communityname">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="31" parent="13" name="streetid">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="32" parent="13" name="streetid">
+      <ColNames>streetid</ColNames>
+    </index>
+    <key id="33" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>communityid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="34" parent="13" name="community_ibfk_1">
+      <ColNames>streetid</ColNames>
+      <RefSchemaName>address</RefSchemaName>
+      <RefTableName>street</RefTableName>
+      <RefColNames>streetid</RefColNames>
+    </foreign-key>
+    <column id="35" parent="14" name="districtid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="36" parent="14" name="cityid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="37" parent="14" name="districtname">
+      <Position>3</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <index id="38" parent="14" name="cityid">
+      <ColNames>cityid</ColNames>
+    </index>
+    <key id="39" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>districtid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="40" parent="14" name="district_ibfk_1">
+      <ColNames>cityid</ColNames>
+      <RefSchemaName>address</RefSchemaName>
+      <RefTableName>city</RefTableName>
+      <RefColNames>cityid</RefColNames>
+    </foreign-key>
+    <column id="41" parent="15" name="provinceid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="42" parent="15" name="provincename">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <key id="43" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>provinceid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="44" parent="16" name="streetid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="45" parent="16" name="districtid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="46" parent="16" name="streetname">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <index id="47" parent="16" name="districtid">
+      <ColNames>districtid</ColNames>
+    </index>
+    <key id="48" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>streetid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="49" parent="16" name="street_ibfk_1">
+      <ColNames>districtid</ColNames>
+      <RefSchemaName>address</RefSchemaName>
+      <RefTableName>district</RefTableName>
+      <RefColNames>districtid</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.tangcco.tcmp054.address.dao.CommunityMapper">
+    <resultMap id="communityMap" type="Community" autoMapping="true">
+        <id property="communityId" column="communityId"/>
+        <association property="street" resultMap="streetMap" javaType="Street"/>
+    </resultMap>
+    <resultMap id="streetMap" type="Street" autoMapping="true">
+        <id property="streetId" column="streetId"/>
+        <association property="district" resultMap="districtMap" javaType="District"/>
+    </resultMap>
+    <resultMap id="districtMap" type="District" autoMapping="true">
+        <id property="districtId" column="districtId"/>
+        <association property="city" resultMap="cityMap" javaType="City"/>
+    </resultMap>
+    <resultMap id="cityMap" type="City" autoMapping="true">
+        <id property="cityId" column="cityId"/>
+        <association property="province" resultMap="provinceMap" javaType="Province"/>
+    </resultMap>
+    <resultMap id="provinceMap" type="Province" autoMapping="true">
+        <id property="provinceId" column="provinceId"/>
+
+    </resultMap>
+
+    <select id="detail" resultMap="communityMap" parameterType="int">
+        SELECT p.provincename,c.cityname,d.districtname,s.streetname,co.communityname FROM province p ,city c ,district d ,street s ,community co
+        WHERE p.provinceid=c.provinceid
+        AND c.cityid=d.cityid
+        AND d.districtid=s.districtid
+        AND s.streetid=co.streetid
+        AND co.communityid=#{communityId}
+    </select>
+</mapper>
